@@ -2,172 +2,77 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#f4f1e9">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Fulfilled Life">
-<link rel="manifest" href="manifest.webmanifest">
+<link rel="manifest" href="./manifest.webmanifest">
 <title>My Fulfilled Life</title>
 <style>
-:root{--bg:#f4f1e9;--paper:#fffdf8;--ink:#303b35;--muted:#778078;--sage:#718b78;--sage2:#e5ede4;--line:#e8e5dc;--gold:#d5ae69;--rose:#eadbd4;--shadow:0 12px 34px rgba(55,65,55,.07)}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.45}
-main{max-width:720px;margin:auto;padding:env(safe-area-inset-top) 18px calc(28px + env(safe-area-inset-bottom))}
-header{padding:26px 4px 18px}.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
-h1{font-family:Georgia,serif;font-size:34px;font-weight:500;margin:8px 0 4px;letter-spacing:-.04em}.sub{color:var(--muted);font-size:14px}
-.card{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:18px;margin:13px 0;box-shadow:var(--shadow)}
-.row{display:flex;align-items:center;justify-content:space-between;gap:12px}.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.stat{background:var(--sage2);border-radius:16px;padding:14px}.stat strong{display:block;font:28px Georgia,serif}.stat span{font-size:12px;color:var(--muted)}
-.progress{height:7px;background:#ecebe4;border-radius:99px;overflow:hidden;margin-top:14px}.progress i{display:block;height:100%;background:var(--sage);border-radius:99px;width:0;transition:width .2s}
-h2{font:20px Georgia,serif;margin:0 0 12px}.hint{font-size:12px;color:var(--muted);margin-top:-6px;margin-bottom:12px}
-.item{display:flex;align-items:center;gap:11px;padding:10px 0;border-bottom:1px solid var(--line)}.item:last-child{border:0}.item input[type=checkbox]{appearance:none;width:22px;height:22px;border:1.5px solid #b7c2b5;border-radius:8px;margin:0;flex:none;background:white}.item input:checked{background:var(--sage);border-color:var(--sage)}.item input:checked:after{content:"✓";display:block;color:white;text-align:center;font-size:15px;line-height:20px}.item label{flex:1;font-size:14px}.item.done label{color:#90978f;text-decoration:line-through}
-textarea,input[type=text]{width:100%;border:1px solid var(--line);background:#fffefa;border-radius:13px;padding:12px;font:14px inherit;color:var(--ink);outline:none;resize:vertical}textarea{min-height:74px}textarea:focus,input:focus{border-color:#9bad9a}
-textarea.preview{min-height:180px;font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;margin-top:10px}
-.prompt{font:italic 13px Georgia,serif;color:var(--muted);margin:0 0 8px}
-button{border:0;border-radius:13px;background:var(--sage);color:white;padding:11px 15px;font-weight:650;font-size:13px;cursor:pointer}button.secondary{background:var(--sage2);color:var(--ink)}button.ghost{background:transparent;color:var(--muted);padding:8px}
-.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.week{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}.day{background:#f0efe8;border-radius:11px;text-align:center;padding:9px 2px;font-size:11px;color:var(--muted)}.day b{display:block;font-size:15px;color:var(--ink);margin-top:4px}.day.active{background:var(--sage2)}.day.today{outline:1px solid var(--sage)}
-footer{text-align:center;color:var(--muted);font:italic 13px Georgia,serif;padding:18px 10px 30px}
-.small{font-size:12px;color:var(--muted)}.section-title{margin-bottom:5px}.privacy{background:#f4f2eb;border-radius:13px;padding:11px;margin-top:12px}
+:root{--bg:#f4f1e9;--paper:#fffdf8;--ink:#303b35;--muted:#778078;--sage:#718b78;--sage2:#e5ede4;--line:#e8e5dc;--gold:#d5ae69;--shadow:0 12px 34px rgba(55,65,55,.07)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}main{max-width:760px;margin:auto;padding:env(safe-area-inset-top) 18px calc(30px + env(safe-area-inset-bottom))}
+header{padding:25px 4px 18px}.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}h1{font:500 36px Georgia,serif;letter-spacing:-.04em;margin:8px 0 4px}.sub{color:var(--muted);font-size:14px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:18px;margin:13px 0;box-shadow:var(--shadow)}h2{font:20px Georgia,serif;margin:0 0 12px}.hint,.small{font-size:12px;color:var(--muted)}.hint{margin:-5px 0 12px}.row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat{background:var(--sage2);border-radius:16px;padding:14px}.stat strong{display:block;font:28px Georgia,serif}.stat span{font-size:12px;color:var(--muted)}.progress{height:7px;background:#ecebe4;border-radius:99px;overflow:hidden;margin-top:14px}.progress i{display:block;height:100%;background:var(--sage);width:0;transition:width .2s}
+.item{display:flex;align-items:center;gap:11px;padding:10px 0;border-bottom:1px solid var(--line)}.item:last-child{border:0}.item input{appearance:none;width:22px;height:22px;border:1.5px solid #b7c2b5;border-radius:8px;margin:0;flex:none;background:white}.item input:checked{background:var(--sage);border-color:var(--sage)}.item input:checked:after{content:"✓";display:block;color:white;text-align:center;font-size:15px;line-height:20px}.item label{flex:1;font-size:14px}.item.done label{color:#90978f;text-decoration:line-through}
+textarea,input[type=text]{width:100%;border:1px solid var(--line);background:#fffefa;border-radius:13px;padding:12px;font:14px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);outline:none;resize:vertical}textarea{min-height:82px}textarea:focus,input:focus{border-color:#9bad9a}button{border:0;border-radius:13px;background:var(--sage);color:white;padding:11px 15px;font-weight:650;font-size:13px;cursor:pointer}button.secondary{background:var(--sage2);color:var(--ink)}button.ghost{background:transparent;color:var(--muted);padding:8px}button:disabled{opacity:.5;cursor:wait}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.prompt{font:italic 13px Georgia,serif;color:var(--muted);margin:0 0 8px}
+.auth{max-width:430px;margin:35px auto}.auth p{color:var(--muted);font-size:14px}.status{font-size:12px;color:var(--muted)}.status.error{color:#a34e43}.entry{padding:14px 0;border-bottom:1px solid var(--line)}.entry:last-child{border:0}.entry time{font-size:11px;color:var(--muted)}.entry p{white-space:pre-wrap;margin:7px 0 0;font-size:14px}.entry .actions{margin-top:8px}.empty{padding:18px 0;text-align:center;color:var(--muted);font:italic 14px Georgia,serif}
+footer{text-align:center;color:var(--muted);font:italic 13px Georgia,serif;padding:18px 10px 30px}.privacy{background:#f4f2eb;border-radius:13px;padding:11px;margin-top:12px}.hidden{display:none!important}
 @media(min-width:600px){main{padding-left:24px;padding-right:24px}h1{font-size:40px}}
 </style>
 </head>
 <body>
 <main>
-<header>
- <div class="eyebrow" id="todayLabel">A gentle check-in</div>
- <h1>My Fulfilled Life <span aria-hidden="true">🌿</span></h1>
- <div class="sub">Live well. Be grateful. Enjoy the little things.</div>
-</header>
-<section class="card">
- <div class="stats">
-  <div class="stat"><strong id="count">0/7</strong><span>small promises kept today</span></div>
-  <div class="stat"><strong id="percent">0%</strong><span>today's gentle progress</span></div>
- </div>
- <div class="progress"><i id="bar"></i></div>
- <p class="small" style="margin:10px 0 0">A good day doesn't require a perfect score. This is a compass, not a judgement.</p>
+<header><div class="eyebrow" id="todayLabel">A gentle check-in</div><h1>My Fulfilled Life <span aria-hidden="true">🌿</span></h1><div class="sub">Live well. Be grateful. Enjoy the little things.</div></header>
+<section id="authPanel" class="card auth">
+ <h2>A little space for a fulfilled life</h2><p>Sign in to keep your intentions, gratitude and journal safely synced across your devices.</p>
+ <button id="googleSignIn" style="width:100%">Continue with Google</button><p id="authMessage" class="status" role="status"></p>
+ <p class="small">Your journal is private to your account. You can sign out at any time.</p>
 </section>
-<section class="card">
- <h2>Today's gentle intentions</h2>
- <p class="hint">Choose what matters today. Rest and family time count too.</p>
- <div id="habits"></div>
- <div class="actions"><button class="secondary" id="editHabits">Edit my intentions</button><button class="ghost" id="resetDay">Clear today's ticks</button></div>
- <div id="editor" hidden style="margin-top:12px">
-  <p class="small">One intention per line. Keep the list kind and realistic.</p>
-  <textarea id="habitText"></textarea>
-  <div class="actions"><button id="saveHabits">Save intentions</button><button class="secondary" id="cancelEdit">Cancel</button></div>
- </div>
-</section>
-<section class="card">
- <h2>A moment of gratitude</h2>
- <p class="prompt">What are three things you appreciate today?</p>
- <textarea id="gratitude" placeholder="A person, a small comfort, something your body let you do…"></textarea>
-</section>
-<section class="card">
- <h2>Evening reflection</h2>
- <p class="prompt">What made me smile? When was I fully present? What can I let go of?</p>
- <textarea id="reflection" placeholder="A few honest lines are enough…"></textarea>
- <div class="actions"><button id="saveDay">Save today's reflection</button><span class="small" id="saveStatus" role="status"></span></div>
-</section>
-<section class="card">
- <h2>Your AI companion ✨</h2>
- <p class="prompt">A gentle conversation about the life you're living — not another productivity score.</p>
- <p class="small">Choose ChatGPT or Gemini. You can preview exactly what will be shared before opening either app.</p>
- <div class="actions">
-  <button id="chatgptDaily">Daily reflection · ChatGPT</button>
-  <button class="secondary" id="geminiDaily">Daily reflection · Gemini</button>
- </div>
- <div class="actions">
-  <button class="secondary" id="chatgptWeekly">Weekly reflection · ChatGPT</button>
-  <button class="secondary" id="geminiWeekly">Weekly reflection · Gemini</button>
- </div>
- <div class="actions"><button class="ghost" id="togglePreview" aria-expanded="false">Preview shared prompt</button></div>
- <textarea class="preview" id="promptPreview" readonly hidden aria-label="Prompt preview"></textarea>
- <p class="small" id="aiStatus" role="status" style="margin-top:9px"></p>
- <div class="privacy small"><strong>Your privacy:</strong> Nothing is sent automatically. The app copies only the summary shown in the preview; you decide whether to paste and send it. Your journal remains in this browser on this device.</div>
-</section>
-<section class="card">
- <h2>This week's rhythm</h2>
- <p class="hint">Days with at least one intention completed.</p>
- <div class="week" id="week"></div>
-</section>
-<section class="card">
- <h2>Your personal backup</h2>
- <p class="small">Your entries stay in this browser on this device. Export a backup occasionally, especially before changing phones or browsers.</p>
- <div class="actions"><button class="secondary" id="export">Export my data</button><button class="secondary" id="importBtn">Import backup</button><input id="importFile" type="file" accept="application/json" hidden></div>
- <p class="small" id="backupStatus" role="status"></p>
-</section>
+<div id="app" class="hidden">
+ <section class="card"><div class="row"><div><div class="small">SIGNED IN</div><strong id="userName"></strong><div id="syncStatus" class="status">Connecting…</div></div><button class="secondary" id="signOut">Sign out</button></div></section>
+ <section class="card"><div class="stats"><div class="stat"><strong id="count">0/7</strong><span>small promises kept today</span></div><div class="stat"><strong id="percent">0%</strong><span>today's gentle progress</span></div></div><div class="progress"><i id="bar"></i></div><p class="small">A good day doesn't require a perfect score. This is a compass, not a judgement.</p></section>
+ <section class="card"><h2>Today's gentle intentions</h2><p class="hint">Choose what matters today. Rest and family time count too.</p><div id="habits"></div><div class="actions"><button class="secondary" id="editHabits">Edit my intentions</button></div><div id="editor" class="hidden" style="margin-top:12px"><p class="small">One intention per line. Keep the list kind and realistic.</p><textarea id="habitText"></textarea><div class="actions"><button id="saveHabits">Save intentions</button><button class="secondary" id="cancelEdit">Cancel</button></div></div></section>
+ <section class="card"><h2>A moment of gratitude</h2><p class="prompt">What are you appreciating today?</p><textarea id="gratitude" placeholder="A person, a small comfort, something your body let you do…"></textarea></section>
+ <section class="card"><h2>Evening reflection</h2><p class="prompt">What made you smile? When were you fully present? What can you let go of?</p><textarea id="reflection" placeholder="A few honest lines are enough…"></textarea><div class="actions"><span id="dayStatus" class="status" role="status">Changes sync automatically.</span></div></section>
+ <section class="card"><h2>Your journal</h2><p class="hint">Unlimited space for thoughts, moments and things you want to remember.</p><textarea id="journalText" placeholder="Write freely. There is no format to follow…"></textarea><div class="actions"><button id="addJournal">Save journal entry</button><span id="journalStatus" class="status" role="status"></span></div><div id="journalEntries"><div class="empty">Your entries will appear here.</div></div></section>
+ <section class="card"><h2>Your AI companion ✨</h2><p class="prompt">A gentle conversation about the life you're living — not another productivity score.</p><p class="small">Choose what to share. Nothing is sent automatically; review the prompt before copying it.</p><div class="actions"><button id="copyDaily">Copy daily reflection prompt</button><button class="secondary" id="copyWeekly">Copy weekly reflection prompt</button></div><textarea id="promptPreview" class="hidden" readonly aria-label="AI prompt preview"></textarea><div class="actions"><button class="ghost" id="togglePrompt">Preview shared prompt</button></div><p id="aiStatus" class="status" role="status"></p></section>
+ <section class="card"><h2>Your personal data</h2><p class="small">Your information is stored in your private Firebase account and synced when online. Export a copy whenever you like.</p><div class="actions"><button class="secondary" id="exportData">Export my data</button></div><p id="backupStatus" class="status" role="status"></p></section>
+</div>
 <footer>Be where your feet are. Let today be enough. ♡</footer>
 </main>
-<script>
-const KEY='fulfilled-life-v1'; // Keep the v1 storage key so existing entries remain available.
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+import {getAuth,GoogleAuthProvider,signInWithPopup,onAuthStateChanged,signOut,setPersistence,browserLocalPersistence} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import {getFirestore,doc,collection,addDoc,setDoc,onSnapshot,query,orderBy,serverTimestamp,enableMultiTabIndexedDbPersistence,getDocs} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
+const firebaseConfig={apiKey:"AIzaSyDyMIogpLNxI8-ZuPqw41dwUPs41-duEoE",authDomain:"my-fulfilled-life.firebaseapp.com",projectId:"my-fulfilled-life",storageBucket:"my-fulfilled-life.firebasestorage.app",messagingSenderId:"666134983512",appId:"1:666134983512:web:eef808a6060146fd362b2d"};
+const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app),provider=new GoogleAuthProvider();
 const DEFAULTS=['Gratitude or quiet breathing','Move my body (swim, strength or walk)','Eat in a way that supports my health','Learn or read something with curiosity','Play piano for pleasure','Be present with family','Choose my phone time intentionally'];
-let state={habits:DEFAULTS,days:{}};
-try{const saved=JSON.parse(localStorage.getItem(KEY)||'null');if(saved&&saved.days&&Array.isArray(saved.habits))state=saved}catch(e){}
-const dateKey=(d=new Date())=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-const today=dateKey(); if(!state.days[today])state.days[today]={checks:[],gratitude:'',reflection:''};
-const day=()=>state.days[today];
-const persist=()=>localStorage.setItem(KEY,JSON.stringify(state));
-const $=id=>document.getElementById(id);
+const $=id=>document.getElementById(id),dateKey=(d=new Date())=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'),today=dateKey();
+let user=null,habits=DEFAULTS.slice(),dayData={checks:[],gratitude:'',reflection:''},journal=[],unsubDay=null,unsubSettings=null,unsubJournal=null,writeTimer=null,dayRef=null,settingsRef=null;
 $('todayLabel').textContent=new Date().toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'});
-function render(){
- const d=day();$('habits').innerHTML='';
- state.habits.forEach((h,i)=>{const wrap=document.createElement('div');wrap.className='item'+(d.checks.includes(i)?' done':'');
- const cb=document.createElement('input');cb.type='checkbox';cb.checked=d.checks.includes(i);cb.id='h'+i;cb.addEventListener('change',()=>{d.checks=cb.checked?[...new Set([...d.checks,i])]:d.checks.filter(x=>x!==i);persist();render()});
- const label=document.createElement('label');label.htmlFor='h'+i;label.textContent=h;wrap.append(cb,label);$('habits').append(wrap)});
- const n=d.checks.length,p=Math.round(n/Math.max(state.habits.length,1)*100);$('count').textContent=`${n}/${state.habits.length}`;$('percent').textContent=p+'%';$('bar').style.width=p+'%';
- if(document.activeElement!==$('gratitude'))$('gratitude').value=d.gratitude||'';
- if(document.activeElement!==$('reflection'))$('reflection').value=d.reflection||'';
- renderWeek();
-}
-function renderWeek(){
- const box=$('week');box.innerHTML='';const now=new Date();const monday=new Date(now);monday.setDate(now.getDate()-((now.getDay()+6)%7));
- for(let i=0;i<7;i++){const dt=new Date(monday);dt.setDate(monday.getDate()+i);const k=dateKey(dt),n=(state.days[k]?.checks||[]).length;const el=document.createElement('div');el.className='day'+(n?' active':'')+(k===today?' today':'');el.innerHTML=`${dt.toLocaleDateString(undefined,{weekday:'short'})}<b>${n? '✓': '·'}</b>`;box.append(el)}
-}
-$('gratitude').addEventListener('input',e=>{day().gratitude=e.target.value;persist()});
-$('reflection').addEventListener('input',e=>{day().reflection=e.target.value;persist()});
-$('saveDay').onclick=()=>{day().gratitude=$('gratitude').value;day().reflection=$('reflection').value;persist();$('saveStatus').textContent='Saved on this device ✓';setTimeout(()=>$('saveStatus').textContent='',2500)};
-$('editHabits').onclick=()=>{$('editor').hidden=!$('editor').hidden;$('habitText').value=state.habits.join('\n')};
-$('cancelEdit').onclick=()=>{$('editor').hidden=true};
-$('saveHabits').onclick=()=>{const list=$('habitText').value.split('\n').map(x=>x.trim()).filter(Boolean).slice(0,12);if(!list.length){alert('Add at least one intention.');return}state.habits=list;Object.values(state.days).forEach(d=>d.checks=d.checks.filter(i=>i<list.length));persist();$('editor').hidden=true;render()};
-$('resetDay').onclick=()=>{if(confirm("Clear today's completed intentions?")){day().checks=[];persist();render()}};
-function dailyPrompt(){
- const d=day(),completed=state.habits.filter((h,i)=>d.checks.includes(i)),pending=state.habits.filter((h,i)=>!d.checks.includes(i));
- return `You are my kind, thoughtful personal wellbeing companion. Help me live with gratitude, presence, balance and contentment — not maximize productivity or make me feel guilty.\n\nMy daily check-in for ${today}:\n\nIntentions completed: ${completed.length}/${state.habits.length}\nCompleted: ${completed.length?completed.join('; '):'None recorded'}\nStill open: ${pending.length?pending.join('; '):'None'}\n\nGratitude:\n${d.gratitude||'Not written yet'}\n\nEvening reflection:\n${d.reflection||'Not written yet'}\n\nPlease respond warmly and briefly. Reflect back what went well, notice one useful pattern if possible, offer one gentle suggestion for tomorrow, and remind me that an imperfect day can still be a good day. Ask at most one thoughtful question.`;
-}
-function weeklyPrompt(){
- const now=new Date(),entries=[];
- for(let i=6;i>=0;i--){const dt=new Date(now);dt.setDate(now.getDate()-i);const k=dateKey(dt),d=state.days[k];if(!d)continue;
-  const completed=state.habits.filter((h,j)=>(d.checks||[]).includes(j));
-  if(completed.length||d.gratitude||d.reflection)entries.push(`${k}\nCompleted intentions: ${completed.length?completed.join('; '):'None recorded'}\nGratitude: ${d.gratitude||'—'}\nReflection: ${d.reflection||'—'}`);
- }
- return `You are my kind, thoughtful wellbeing companion. Help me build a fulfilled life through gratitude, presence, relationships, health, curiosity and rest — not productivity pressure.\n\nHere is the journal information I chose to share from the last seven days:\n\n${entries.length?entries.join('\n\n---\n\n'):'I have not recorded any check-ins this week.'}\n\nPlease give me a concise weekly reflection: (1) meaningful moments and wins to appreciate, (2) patterns that seem to support or drain my wellbeing, (3) one gentle experiment for next week. Avoid judgement, diagnosis, or turning this into a performance review. Ask at most one thoughtful question.`;
-}
-let currentPrompt='';
-function makePrompt(period){currentPrompt=period==='weekly'?weeklyPrompt():dailyPrompt();$('promptPreview').value=currentPrompt;return currentPrompt}
-async function copyPrompt(prompt){
- try{await navigator.clipboard.writeText(prompt);return true}catch(e){
-  const area=$('promptPreview');area.hidden=false;area.value=prompt;area.focus();area.select();
-  try{return document.execCommand('copy')}catch(err){return false}
- }
-}
-async function handoff(provider,period){
- const prompt=makePrompt(period),url=provider==='gemini'?'https://gemini.google.com/app':'https://chatgpt.com/';
- $('aiStatus').textContent='Preparing your selected summary…';
- const copied=await copyPrompt(prompt);
- $('promptPreview').hidden=false;$('togglePreview').setAttribute('aria-expanded','true');$('togglePreview').textContent='Hide prompt preview';
- $('aiStatus').textContent=copied?'Prompt copied. The AI app is opening; review the prompt and paste it into the conversation.':'Preview is ready. Clipboard access was blocked; copy the text from the preview before pasting it into the AI app.';
- const win=window.open(url,'_blank','noopener');
- if(!win){$('aiStatus').textContent+=' If it did not open, use this link: '+url;}
-}
-$('chatgptDaily').onclick=()=>handoff('chatgpt','daily');
-$('geminiDaily').onclick=()=>handoff('gemini','daily');
-$('chatgptWeekly').onclick=()=>handoff('chatgpt','weekly');
-$('geminiWeekly').onclick=()=>handoff('gemini','weekly');
-$('togglePreview').onclick=()=>{const area=$('promptPreview');area.hidden=!area.hidden;$('togglePreview').textContent=area.hidden?'Preview shared prompt':'Hide prompt preview';$('togglePreview').setAttribute('aria-expanded',String(!area.hidden));if(!area.hidden&&!currentPrompt)makePrompt('daily')};
-$('export').onclick=()=>{const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='my-fulfilled-life-backup.json';a.click();URL.revokeObjectURL(a.href);$('backupStatus').textContent='Backup exported.'};
-$('importBtn').onclick=()=>$('importFile').click();
-$('importFile').onchange=async e=>{try{const f=e.target.files[0];if(!f)return;const v=JSON.parse(await f.text());if(!Array.isArray(v.habits)||!v.days)throw Error();state=v;persist();render();$('backupStatus').textContent='Backup restored.'}catch(err){$('backupStatus').textContent='That backup file could not be read.'}};
-render();persist();
-if('serviceWorker'in navigator && location.protocol.startsWith('http'))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+const userRoot=()=>doc(db,'users',user.uid),dailyRef=()=>doc(db,'users',user.uid,'dailyCheckins',today),journalCol=()=>collection(db,'users',user.uid,'journal'),settingsDoc=()=>doc(db,'users',user.uid,'profile','preferences');
+function setSync(message,error=false){$('syncStatus').textContent=message;$('syncStatus').classList.toggle('error',error)}
+function cleanup(){[unsubDay,unsubSettings,unsubJournal].forEach(fn=>{if(fn)fn()});unsubDay=unsubSettings=unsubJournal=null;clearTimeout(writeTimer)}
+function renderHabits(){const root=$('habits');root.replaceChildren();habits.forEach((name,i)=>{const wrap=document.createElement('div');wrap.className='item'+(dayData.checks.includes(i)?' done':'');const cb=document.createElement('input');cb.type='checkbox';cb.checked=dayData.checks.includes(i);cb.id='habit-'+i;cb.addEventListener('change',()=>{dayData.checks=cb.checked?[...new Set([...dayData.checks,i])]:dayData.checks.filter(x=>x!==i);renderHabits();renderStats();scheduleDaySave()});const label=document.createElement('label');label.htmlFor=cb.id;label.textContent=name;wrap.append(cb,label);root.append(wrap)});renderStats()}
+function renderStats(){const n=dayData.checks.length,p=Math.round(n/Math.max(habits.length,1)*100);$('count').textContent=n+'/'+habits.length;$('percent').textContent=p+'%';$('bar').style.width=p+'%'}
+function scheduleDaySave(){clearTimeout(writeTimer);$('dayStatus').textContent='Saving…';writeTimer=setTimeout(async()=>{try{await setDoc(dailyRef(),{date:today,checks:dayData.checks,gratitude:$('gratitude').value,reflection:$('reflection').value,updatedAt:serverTimestamp()},{merge:true});$('dayStatus').textContent='Synced ✓'}catch(e){$('dayStatus').textContent='Could not sync. Check your connection.';console.error(e)}},450)}
+function subscribeUser(){cleanup();dayRef=dailyRef();settingsRef=settingsDoc();unsubSettings=onSnapshot(settingsRef,snap=>{if(snap.exists()&&Array.isArray(snap.data().habits))habits=snap.data().habits;else setDoc(settingsRef,{habits:DEFAULTS,createdAt:serverTimestamp()},{merge:true}).catch(console.error);renderHabits();$('habitText').value=habits.join('\n')},e=>setSync('Settings sync error: '+e.message,true));unsubDay=onSnapshot(dayRef,snap=>{dayData=snap.exists()?{checks:snap.data().checks||[],gratitude:snap.data().gratitude||'',reflection:snap.data().reflection||''}:{checks:[],gratitude:'',reflection:''};$('gratitude').value=dayData.gratitude;$('reflection').value=dayData.reflection;renderHabits();setSync('Synced with your account')},e=>setSync('Daily sync error: '+e.message,true));const q=query(journalCol(),orderBy('createdAt','desc'));unsubJournal=onSnapshot(q,snap=>{journal=snap.docs.map(d=>({id:d.id,...d.data()}));renderJournal()},e=>{$('journalEntries').textContent='Journal could not be loaded: '+e.message;console.error(e)});setSync('Connected · syncing your private data')}
+function renderJournal(){const root=$('journalEntries');root.replaceChildren();if(!journal.length){const empty=document.createElement('div');empty.className='empty';empty.textContent='Your first entry can start whenever you feel ready.';root.append(empty);return}journal.forEach(entry=>{const el=document.createElement('article');el.className='entry';const time=document.createElement('time');const dt=entry.createdAt?.toDate?entry.createdAt.toDate():new Date(entry.createdAtISO||Date.now());time.textContent=dt.toLocaleString(undefined,{dateStyle:'medium',timeStyle:'short'});const p=document.createElement('p');p.textContent=entry.text||'';const actions=document.createElement('div');actions.className='actions';const del=document.createElement('button');del.className='ghost';del.textContent='Delete';del.addEventListener('click',async()=>{if(!confirm('Delete this journal entry?'))return;try{const {deleteDoc}=await import('https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js');await deleteDoc(doc(db,'users',user.uid,'journal',entry.id))}catch(e){$('journalStatus').textContent='Could not delete entry.';console.error(e)}});actions.append(del);el.append(time,p,actions);root.append(el)})}
+async function signIn(){ $('googleSignIn').disabled=true;$('authMessage').textContent='Opening Google sign-in…';try{await signInWithPopup(auth,provider)}catch(e){$('authMessage').textContent=e.code==='auth/unauthorized-domain'?'This domain is not authorized in Firebase Authentication.':e.message;console.error(e)}finally{$('googleSignIn').disabled=false}}
+$('googleSignIn').addEventListener('click',signIn);$('signOut').addEventListener('click',()=>signOut(auth));
+$('editHabits').onclick=()=>{$('editor').classList.toggle('hidden');$('habitText').value=habits.join('\n')};$('cancelEdit').onclick=()=>$('editor').classList.add('hidden');
+$('saveHabits').onclick=async()=>{const list=$('habitText').value.split('\n').map(x=>x.trim()).filter(Boolean).slice(0,12);if(!list.length){alert('Add at least one intention.');return}habits=list;dayData.checks=dayData.checks.filter(i=>i<list.length);try{await setDoc(settingsRef,{habits,updatedAt:serverTimestamp()},{merge:true});await setDoc(dayRef,{checks:dayData.checks,updatedAt:serverTimestamp()},{merge:true});$('editor').classList.add('hidden');renderHabits()}catch(e){$('dayStatus').textContent='Could not save intentions.';console.error(e)}};
+$('gratitude').addEventListener('input',scheduleDaySave);$('reflection').addEventListener('input',scheduleDaySave);
+$('addJournal').onclick=async()=>{const text=$('journalText').value.trim();if(!text){$('journalStatus').textContent='Write a thought or moment first.';return}$('addJournal').disabled=true;try{await addDoc(journalCol(),{text,createdAt:serverTimestamp(),createdAtISO:new Date().toISOString()});$('journalText').value='';$('journalStatus').textContent='Entry saved and synced ✓'}catch(e){$('journalStatus').textContent='Could not save. Check your connection.';console.error(e)}finally{$('addJournal').disabled=false}};
+function dailyPrompt(){const done=habits.filter((h,i)=>dayData.checks.includes(i)),open=habits.filter((h,i)=>!dayData.checks.includes(i));return 'You are my kind, thoughtful personal wellbeing companion. Help me live with gratitude, presence, balance and contentment — not maximize productivity or make me feel guilty.\n\nMy daily check-in for '+today+':\nIntentions completed: '+done.length+'/'+habits.length+'\nCompleted: '+(done.join('; ')||'None recorded')+'\nStill open: '+(open.join('; ')||'None')+'\n\nGratitude:\n'+(dayData.gratitude||'Not written yet')+'\n\nEvening reflection:\n'+(dayData.reflection||'Not written yet')+'\n\nPlease respond warmly and briefly. Reflect what went well, notice one useful pattern, offer one gentle suggestion for tomorrow, and remind me that an imperfect day can still be a good day.'}
+function weeklyPrompt(){const since=new Date();since.setDate(since.getDate()-6);const entries=journal.filter(e=>{const d=e.createdAt?.toDate?e.createdAt.toDate():new Date(e.createdAtISO||0);return d>=since}).map(e=>{const d=e.createdAt?.toDate?e.createdAt.toDate():new Date(e.createdAtISO);return d.toLocaleDateString()+': '+e.text});return 'You are my thoughtful wellbeing companion. Help me build a fulfilled life through gratitude, presence, relationships, health, curiosity and rest — not productivity pressure.\n\nJournal entries from the last seven days:\n'+(entries.join('\n\n')||'No journal entries recorded.')+'\n\nPlease offer a concise weekly reflection: meaningful moments to appreciate, patterns that support or drain wellbeing, and one gentle experiment for next week. Avoid judgement or turning this into a performance review.'}
+async function copyPrompt(text){$('promptPreview').value=text;$('promptPreview').classList.remove('hidden');try{await navigator.clipboard.writeText(text);$('aiStatus').textContent='Prompt copied. Review it in the preview before sharing.'}catch(e){$('aiStatus').textContent='Preview is ready. Select and copy the text manually.'}}
+$('copyDaily').onclick=()=>copyPrompt(dailyPrompt());$('copyWeekly').onclick=()=>copyPrompt(weeklyPrompt());$('togglePrompt').onclick=()=>{$('promptPreview').classList.toggle('hidden');$('togglePrompt').textContent=$('promptPreview').classList.contains('hidden')?'Preview shared prompt':'Hide prompt preview'};
+$('exportData').onclick=async()=>{try{const [days,journals]=await Promise.all([getDocs(collection(db,'users',user.uid,'dailyCheckins')),getDocs(journalCol())]);const data={exportedAt:new Date().toISOString(),habits,dailyCheckins:days.docs.map(d=>({id:d.id,...d.data()})),journal:journals.docs.map(d=>({id:d.id,...d.data()}))};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='my-fulfilled-life-export.json';a.click();URL.revokeObjectURL(url);$('backupStatus').textContent='Your data export is ready.'}catch(e){$('backupStatus').textContent='Export failed. Check your connection.';console.error(e)}};
+onAuthStateChanged(auth,async u=>{cleanup();user=u;$('authPanel').classList.toggle('hidden',!!u);$('app').classList.toggle('hidden',!u);if(!u)return;$('userName').textContent=u.displayName||u.email||'Welcome';subscribeUser()});
+try{await setPersistence(auth,browserLocalPersistence);try{await enableMultiTabIndexedDbPersistence(db)}catch(e){if(e.code!=='failed-precondition'&&e.code!=='unimplemented')console.warn('Offline cache unavailable:',e.message)}}catch(e){console.warn('Persistence setup:',e.message)}
+if('serviceWorker'in navigator&&location.protocol.startsWith('http'))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(console.warn));
 </script>
 </body></html>
