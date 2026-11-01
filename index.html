@@ -146,6 +146,29 @@ footer{text-align:center;color:var(--muted);font:italic 13px Georgia,serif;paddi
 }
 @media(max-width:380px){main{padding-left:70px;padding-right:8px}#app{grid-template-columns:46px minmax(0,1fr);gap:8px}.desktop-sidebar{width:46px;left:6px}.home-tiles{gap:8px}.tile{padding:11px;min-height:150px}.tile strong{font-size:16px}}
 
+/* Fix: the fixed mobile sidebar must not also consume a grid column. */
+@media(max-width:719px){
+ #app{display:block!important;width:100%;min-width:0}
+ .desktop-sidebar{position:fixed!important;left:8px;top:12px;bottom:12px;width:52px;z-index:30}
+ .desktop-sidebar.expanded{width:210px}
+ .desktop-content{display:block!important;width:100%;min-width:0;margin:0}
+ .view-panel,.home-overview,.home-summary,.home-tiles{width:100%;min-width:0}
+ .home-tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .tile{width:100%;min-width:0;max-width:100%;overflow-wrap:anywhere;word-break:normal}
+ .home-overview{display:block!important}
+ .home-welcome{width:100%;min-width:0}
+ .home-account{width:100%;min-width:0}
+ .home-summary .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:380px){
+ main{padding-left:68px;padding-right:10px}
+ .desktop-sidebar{left:6px;width:46px}
+ .desktop-sidebar.expanded{width:200px}
+ .home-tiles{gap:8px}
+ .tile{padding:11px}
+ .tile strong{font-size:16px}
+}
+
 </style>
 </head>
 <body>
