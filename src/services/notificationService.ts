@@ -56,7 +56,7 @@ export const sendTestNotification = async (
           tag: 'test-reminder',
           vibrate: [100, 50, 100],
           data: { url: './' }
-        } as NotificationOptions);
+        } as any);
         return { success: true, message: 'Device test notification displayed. This does not yet test server delivery.' };
       }
     }
