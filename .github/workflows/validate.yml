@@ -23,6 +23,8 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
+      - name: Test reminder scheduling
+        run: node --test scripts/reminder-schedule.test.mjs
       - name: Type-check and build
         env:
           VITE_VAPID_PUBLIC_KEY: ${{ secrets.VITE_VAPID_PUBLIC_KEY }}
