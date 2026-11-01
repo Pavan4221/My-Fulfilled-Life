@@ -24,7 +24,7 @@ function recurrenceMatches(days, weekday) {
   if (!Array.isArray(days) || days.length === 0 || days.includes('daily')) return true;
   if (days.includes('weekdays')) return !['sat', 'sun'].includes(weekday);
   if (days.includes('weekends')) return ['sat', 'sun'].includes(weekday);
-  return days.some((day) => day.slice(0, 3).toLowerCase() === weekday);
+  return days.some((day) => typeof day === 'string' && day.slice(0, 3).toLowerCase() === weekday);
 }
 
 /**
