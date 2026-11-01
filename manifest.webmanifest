@@ -1,0 +1,10 @@
+{
+  "name": "My Fulfilled Life",
+  "short_name": "Fulfilled Life",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f4f1e9",
+  "theme_color": "#f4f1e9",
+  "description": "A gentle daily companion for gratitude, presence and wellbeing.",
+  "icons": []
+}
