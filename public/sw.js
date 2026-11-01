@@ -1,4 +1,4 @@
-const CACHE = 'fulfilled-life-v2-8';
+const CACHE = 'fulfilled-life-v2-9';
 const FILES = ['./', './index.html', './manifest.webmanifest', './icon.svg'];
 
 self.addEventListener('install', (event) => {
