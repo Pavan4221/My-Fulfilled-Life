@@ -15,7 +15,7 @@ export interface NotificationSettings {
   morningReminder?: { enabled: boolean; time: string };
   eveningReminder?: { enabled: boolean; time: string };
   timezone: string;
-  subscription?: any;
+  pushSubscriptionReady?: boolean;
   updatedAt?: any;
 }
 
