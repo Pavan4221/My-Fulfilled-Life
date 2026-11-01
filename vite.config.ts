@@ -20,7 +20,10 @@ const devHtmlPlugin = (): Plugin => ({
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => ({
-  base: command === 'build' ? './' : '/',
+  // GitHub Pages project sites are hosted beneath /<repository-name>/.
+  // Use an absolute production base so installed PWAs resolve built assets
+  // from the project path rather than the domain root.
+  base: command === 'build' ? '/My-Fulfilled-Life/' : '/',
   plugins: [devHtmlPlugin(), react(), tailwindcss()],
   resolve: {
     dedupe: ['react', 'react-dom'],
