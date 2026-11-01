@@ -32,7 +32,8 @@ import {
   isNotificationSupported,
   getNotificationPermission,
   requestNotificationPermission,
-  sendTestNotification
+  sendTestNotification,
+  subscribeToWebPush
 } from '../services/notificationService';
 
 export const DEFAULTS = [
@@ -733,13 +734,60 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     [journal, saveGuestStorage]
   );
 
-  // Request notifications permission
+  // Request permission and register this signed-in device for server Web Push.
   const requestNotifications = useCallback(async (): Promise<NotificationPermission> => {
     const perm = await requestNotificationPermission();
-    await updateNotificationSettings({
-      permission: perm,
-      enabled: perm === 'granted'
-    });
+    if (perm !== 'granted') {
+      await updateNotificationSettings({
+        permission: perm,
+        enabled: false,
+        pushSubscriptionReady: false
+      });
+      return perm;
+    }
+
+    const currentUser = userRef.current;
+    if (!currentUser || currentUser.isGuest) {
+      await updateNotificationSettings({
+        permission: perm,
+        enabled: false,
+        pushSubscriptionReady: false
+      });
+      return perm;
+    }
+
+    try {
+      const vapidPublicKey = import.meta.env.VITE_VAPID_PUBLIC_KEY || '';
+      const subscription = await subscribeToWebPush(vapidPublicKey);
+      const endpoint = subscription.endpoint;
+      const digest = await crypto.subtle.digest(
+        'SHA-256',
+        new TextEncoder().encode(endpoint)
+      );
+      const deviceId = Array.from(new Uint8Array(digest))
+        .map((byte) => byte.toString(16).padStart(2, '0'))
+        .join('');
+      const subscriptionRef = doc(db, 'users', currentUser.uid, 'pushSubscriptions', deviceId);
+      await setDoc(subscriptionRef, {
+        subscription: subscription.toJSON(),
+        endpoint,
+        updatedAt: serverTimestamp()
+      }, { merge: true });
+
+      await updateNotificationSettings({
+        permission: perm,
+        enabled: true,
+        pushSubscriptionReady: true,
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC'
+      });
+    } catch (err) {
+      console.error('Could not register this device for Web Push:', err);
+      await updateNotificationSettings({
+        permission: perm,
+        enabled: false,
+        pushSubscriptionReady: false
+      });
+    }
     return perm;
   }, [updateNotificationSettings]);
 
