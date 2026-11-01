@@ -65,9 +65,9 @@ export const SettingsView: React.FC = () => {
       if (user?.isGuest) {
         setNotifStatus('Device permission granted. Sign in with Google to enable reminders while MFL is closed.');
       } else if (notificationSettings.pushSubscriptionReady) {
-        setNotifStatus('This device is registered for push notifications. The server scheduler still needs to be configured and tested.');
+        setNotifStatus('Permission granted. Device registration was attempted; server delivery will be verified after the scheduler is configured.');
       } else {
-        setNotifStatus('Permission granted, but device registration did not complete. Check the VAPID key and try again.');
+        setNotifStatus('Permission granted. Device registration may need the VAPID key configured; check the browser console if setup fails.');
       }
     } else if (perm === 'denied') {
       setNotifStatus(
