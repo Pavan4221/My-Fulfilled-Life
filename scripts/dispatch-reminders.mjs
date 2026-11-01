@@ -102,7 +102,8 @@ async function releaseForRetry(claimRef, error) {
 async function sendToDevice(userRef, subscriptionDoc, slot) {
   const subscription = subscriptionDoc.data()?.subscription;
   if (!isValidSubscription(subscription)) {
-    console.warn('Skipping malformed subscription:', subscriptionDoc.id);
+    console.warn('Removing malformed subscription:', subscriptionDoc.id);
+    await subscriptionDoc.ref.delete();
     return 'invalid';
   }
 
