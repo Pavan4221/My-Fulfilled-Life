@@ -62,7 +62,13 @@ export const SettingsView: React.FC = () => {
     setNotifStatus('Requesting browser permission…');
     const perm = await requestNotifications();
     if (perm === 'granted') {
-      setNotifStatus('Notifications enabled! Try sending a test reminder below.');
+      if (user?.isGuest) {
+        setNotifStatus('Device permission granted. Sign in with Google to enable reminders while MFL is closed.');
+      } else if (notificationSettings.pushSubscriptionReady) {
+        setNotifStatus('Permission granted. Device registration was attempted; server delivery will be verified after the scheduler is configured.');
+      } else {
+        setNotifStatus('Permission granted. Device registration may need the VAPID key configured; check the browser console if setup fails.');
+      }
     } else if (perm === 'denied') {
       setNotifStatus(
         'Permission was blocked. Please enable notification permissions in your browser or phone settings.'
@@ -133,7 +139,7 @@ export const SettingsView: React.FC = () => {
             Push Notifications & Reminders
           </h3>
           <p className="text-xs text-[#778078] mb-4 leading-relaxed">
-            Receive gentle reminders for your intentions, morning check-in, and evening reflection. Works directly on your phone lock screen via Web Push.
+            Receive gentle reminders for your intentions, morning check-in, and evening reflection. For signed-in accounts, receive reminders on your device even when MFL is closed, once server delivery is configured.
           </p>
 
           <div className="p-4 rounded-xl bg-[#f7f8f4] border border-[#e2e7df] space-y-4">
@@ -172,7 +178,7 @@ export const SettingsView: React.FC = () => {
                   disabled={isTestingNotif}
                   className="py-2.5 px-4 rounded-xl bg-[#718b78] hover:bg-[#607766] disabled:opacity-50 text-white font-semibold text-xs shadow-xs transition-colors cursor-pointer"
                 >
-                  {isTestingNotif ? 'Sending…' : '🔔 Send Test Reminder'}
+                  {isTestingNotif ? 'Sending…' : '🔔 Test This Device'}
                 </button>
               )}
             </div>

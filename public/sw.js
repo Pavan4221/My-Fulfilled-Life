@@ -1,4 +1,4 @@
-const CACHE = 'fulfilled-life-v2-7';
+const CACHE = 'fulfilled-life-v2-8';
 const FILES = ['./', './index.html', './manifest.webmanifest', './icon.svg'];
 
 self.addEventListener('install', (event) => {
@@ -92,8 +92,8 @@ self.addEventListener('push', (event) => {
   const title = data.title || 'My Fulfilled Life 🌿';
   const options = {
     body: data.body || 'A gentle moment for yourself today.',
-    icon: './icon.svg',
-    badge: './icon.svg',
+    icon: new URL('./icon.svg', self.registration.scope).href,
+    badge: new URL('./icon.svg', self.registration.scope).href,
     tag: data.tag || 'gentle-intention-reminder',
     vibrate: [100, 50, 100],
     data: {
@@ -108,18 +108,27 @@ self.addEventListener('push', (event) => {
 // Handle clicking on notification
 self.addEventListener('notificationclick', (event) => {
   event.notification.close();
-  const targetUrl = (event.notification.data && event.notification.data.url) || './';
 
-  event.waitUntil(
-    clients.matchAll({ type: 'window', includeUncontrolled: true }).then((clientList) => {
-      for (const client of clientList) {
-        if (client.url && 'focus' in client) {
-          return client.focus();
-        }
-      }
-      if (clients.openWindow) {
-        return clients.openWindow(targetUrl);
-      }
-    })
-  );
+  event.waitUntil((async () => {
+    const scopeUrl = new URL(self.registration.scope);
+    const targetUrl = new URL(
+      (event.notification.data && event.notification.data.url) || './',
+      scopeUrl
+    );
+
+    // Never let notification payloads navigate outside this app's origin/scope.
+    if (
+      targetUrl.origin !== scopeUrl.origin ||
+      !targetUrl.pathname.startsWith(scopeUrl.pathname)
+    ) return;
+
+    const clientList = await clients.matchAll({ type: 'window', includeUncontrolled: true });
+    for (const client of clientList) {
+      if (!client.url || !client.url.startsWith(scopeUrl.origin + scopeUrl.pathname)) continue;
+      if ('navigate' in client) await client.navigate(targetUrl.href);
+      if ('focus' in client) return client.focus();
+    }
+
+    if (clients.openWindow) return clients.openWindow(targetUrl.href);
+  })());
 });
