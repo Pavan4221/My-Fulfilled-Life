@@ -48,6 +48,26 @@ footer{text-align:center;color:var(--muted);font:italic 13px Georgia,serif;paddi
 .view-panel{display:none;min-width:0}.view-panel.active{display:block}.home-welcome h2{font:500 29px Georgia,serif;margin:5px 0 8px;color:#123f3c}.home-welcome p,.view-heading p{margin:0;color:var(--muted);font-size:14px}.home-account{margin-left:auto;text-align:right;min-width:150px}.home-account button{margin-top:8px}.home-summary .stats{grid-template-columns:repeat(2,minmax(0,1fr))}.home-tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.tile{display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:8px;min-height:190px;padding:22px;border-radius:22px;color:#194b45;background:#fff;border:1px solid #e6e8df;box-shadow:var(--shadow)}.tile strong{font:600 22px Georgia,serif}.tile span:not(.tile-icon){font-size:13px;font-weight:400;color:#687a73}.tile .tile-icon{font-size:25px}.tile em{font-style:normal;font-size:13px;font-weight:700;margin-top:auto}.tile small{font-size:11px;font-weight:400;color:#7a766e}.tile-checkin{background:#e7f2e8}.tile-journal{background:#efebfa}.tile-insights{background:#fbf1dd}.tile-intentions{background:#fffdf8}.tile-ai{background:#e5f0ef}.tile-settings{background:#f0f0e9}.view-heading{padding:8px 4px 14px}.view-heading h2{font:500 30px Georgia,serif;margin:8px 0 3px}.back-home{margin-bottom:12px;background:#e5ede4;color:#30433a}.desktop-sidebar{display:none}
 @media(min-width:900px){.desktop-content{display:block}.desktop-content>.view-panel{display:none}.desktop-content>.view-panel.active{display:block}.desktop-content .home-overview{background:transparent;border:0;padding:0;margin:0 0 16px;box-shadow:none;display:block;min-height:0}.home-overview .home-welcome{padding:26px 24px;border-radius:24px;background:linear-gradient(115deg,#e2f0e9,#f7f5e9)}.home-summary{margin:0 0 16px!important}.home-tiles{gap:16px}.tile{min-height:210px;padding:24px}.view-panel:not(#view-home)>.card{margin:0 0 14px}.view-heading{padding:10px 4px 18px}}
 @media(max-width:599px){.home-tiles{grid-template-columns:1fr}.tile{min-height:150px}.home-account{text-align:left;margin:14px 0 0;width:100%}.home-overview{display:block}}
+/* Compact layout for phones and tablets: keep the home tiles readable. */
+@media(max-width:899px){
+ main{width:100%;max-width:760px;margin:0 auto;padding-left:16px;padding-right:16px}
+ #app{display:block}
+ .desktop-sidebar{display:none!important}
+ .desktop-content{display:block;width:100%;min-width:0}
+ .view-panel{width:100%;min-width:0}
+ .home-overview{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+ .home-welcome{flex:1 1 100%;min-width:0;width:100%}
+ .home-welcome h2{font-size:clamp(25px,5vw,30px);line-height:1.2;max-width:22ch}
+ .home-account{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0;text-align:left;width:100%;min-width:0}
+ .home-account button{margin:0;flex:none}
+ .home-summary{width:100%}
+ .home-tiles{grid-template-columns:1fr;gap:12px;width:100%}
+ .tile{width:100%;min-height:138px;padding:20px}
+ .tile strong{font-size:21px}
+ .tile em{margin-top:8px}
+ .view-heading,.view-panel>.card{width:100%}
+}
+
 </style>
 </head>
 <body>
