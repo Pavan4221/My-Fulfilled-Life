@@ -19,6 +19,32 @@ textarea,input[type=text]{width:100%;border:1px solid var(--line);background:#ff
 .auth{max-width:430px;margin:35px auto}.auth p{color:var(--muted);font-size:14px}.status{font-size:12px;color:var(--muted)}.status.error{color:#a34e43}.entry{padding:14px 0;border-bottom:1px solid var(--line)}.entry:last-child{border:0}.entry time{font-size:11px;color:var(--muted)}.entry p{white-space:pre-wrap;margin:7px 0 0;font-size:14px}.entry .actions{margin-top:8px}.empty{padding:18px 0;text-align:center;color:var(--muted);font:italic 14px Georgia,serif}
 footer{text-align:center;color:var(--muted);font:italic 13px Georgia,serif;padding:18px 10px 30px}.privacy{background:#f4f2eb;border-radius:13px;padding:11px;margin-top:12px}.hidden{display:none!important}
 @media(min-width:600px){main{padding-left:24px;padding-right:24px}h1{font-size:40px}}
+/* Desktop dashboard shell — presentation only; existing Firebase logic is unchanged. */
+.desktop-sidebar{display:none}
+@media(min-width:900px){
+ main{max-width:1500px;padding:18px 26px 32px}
+ header{padding:12px 4px 20px}
+ h1{font-size:32px}
+ #app{display:grid;grid-template-columns:250px minmax(0,1fr);gap:24px;align-items:start}
+ .desktop-sidebar{display:flex;flex-direction:column;position:sticky;top:18px;min-height:calc(100vh - 140px);padding:22px 16px;border-radius:26px;color:#f4fbf8;background:linear-gradient(165deg,#063f40,#075653 65%,#0b4848);box-shadow:0 12px 34px rgba(20,58,54,.12)}
+ .desktop-brand{text-align:center;padding:8px 8px 26px;font:600 17px Georgia,serif}
+ .desktop-mark{width:76px;height:76px;margin:0 auto 10px;border-radius:50%;display:grid;place-items:center;color:white;font:bold 25px Georgia,serif;background:linear-gradient(145deg,#f6d18c,#f4a85e 45%,#1e7770 46%,#073f40);border:2px solid #ffffffa6}
+ .desktop-nav{display:grid;gap:7px}
+ .desktop-nav a{display:block;text-decoration:none;color:#eaf5f1;padding:13px 12px;border-radius:14px;font-size:14px;font-weight:600}
+ .desktop-nav a:hover,.desktop-nav a:focus{background:#ffffff20;outline:none}
+ .desktop-sidebar-foot{margin-top:auto;border-top:1px solid #ffffff35;padding:18px 8px 2px;color:#d7e8e2;font-size:12px}
+ .desktop-content{min-width:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start}
+ .desktop-content>.card{margin:0;padding:22px;border-radius:22px}
+ .desktop-content>.card:first-child{grid-column:1/-1;background:linear-gradient(115deg,#e2f0e9,#f7f5e9);border:0;min-height:145px;display:flex;align-items:center}
+ .desktop-content>.card:nth-child(2){grid-column:1/-1}
+ .desktop-content>.card:nth-child(2) .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .desktop-content>.card:nth-child(3){background:#e7f2e8}
+ .desktop-content>.card:nth-child(4){background:#efebfa}
+ .desktop-content>.card:nth-child(5){background:#fbf1dd}
+ .desktop-content>.card:nth-child(6){background:#fffdf8}
+ .desktop-content h2{font-size:22px}
+}
+@media(min-width:1200px){#app{grid-template-columns:270px minmax(0,1fr);gap:28px}.desktop-content{gap:16px}.desktop-content>.card{padding:24px}}
 </style>
 </head>
 <body>
@@ -30,14 +56,17 @@ footer{text-align:center;color:var(--muted);font:italic 13px Georgia,serif;paddi
  <p class="small">Your journal is private to your account. You can sign out at any time.</p>
 </section>
 <div id="app" class="hidden">
- <section class="card"><div class="row"><div><div class="small">SIGNED IN</div><strong id="userName"></strong><div id="syncStatus" class="status">Connecting…</div></div><button class="secondary" id="signOut">Sign out</button></div></section>
+ <aside class="desktop-sidebar" aria-label="Page sections"><div class="desktop-brand"><div class="desktop-mark">MFL</div><div>My Fulfilled Life</div></div><nav class="desktop-nav"><a href="#home-overview">⌂　Home</a><a href="#daily-intentions">☑　Check-In</a><a href="#journal-section">▤　Journal</a><a href="#ai-section">✧　AI Companion</a><a href="#intentions-section">♡　My Intentions</a><a href="#data-section">⚙　Settings</a></nav><div class="desktop-sidebar-foot">Be where your feet are. ♡</div></aside>
+ <div class="desktop-content">
+ <section class="card home-overview" id="home-overview"><div class="row"><div><div class="small">SIGNED IN</div><strong id="userName"></strong><div id="syncStatus" class="status">Connecting…</div></div><button class="secondary" id="signOut">Sign out</button></div></section>
  <section class="card"><div class="stats"><div class="stat"><strong id="count">0/7</strong><span>small promises kept today</span></div><div class="stat"><strong id="percent">0%</strong><span>today's gentle progress</span></div></div><div class="progress"><i id="bar"></i></div><p class="small">A good day doesn't require a perfect score. This is a compass, not a judgement.</p></section>
- <section class="card"><h2>Today's gentle intentions</h2><p class="hint">A few simple ideas to begin with. Keep the ones that matter and make this list your own.</p><div id="habits"></div><div class="actions"><button class="secondary" id="editHabits">Manage my intentions</button></div><div id="editor" class="hidden" style="margin-top:12px"><p class="small">Add, edit or remove intentions below — one intention per line. These are saved to your account and will appear on all your devices.</p><textarea id="habitText" placeholder="Take a mindful pause&#10;Move in a way that feels good&#10;Add your own intention…"></textarea><div class="actions"><button id="saveHabits">Save intentions</button><button class="secondary" id="cancelEdit">Cancel</button></div></div></section>
+ <section class="card" id="daily-intentions"><h2>Today's gentle intentions</h2><p class="hint">A few simple ideas to begin with. Keep the ones that matter and make this list your own.</p><div id="habits"></div><div class="actions"><button class="secondary" id="editHabits">Manage my intentions</button></div><div id="intentions-section"><div id="editor" class="hidden" style="margin-top:12px"><p class="small">Add, edit or remove intentions below — one intention per line. These are saved to your account and will appear on all your devices.</p><textarea id="habitText" placeholder="Take a mindful pause&#10;Move in a way that feels good&#10;Add your own intention…"></textarea><div class="actions"><button id="saveHabits">Save intentions</button><button class="secondary" id="cancelEdit">Cancel</button></div></div></div></section>
  <section class="card"><h2>A moment of gratitude</h2><p class="prompt">What are you appreciating today?</p><textarea id="gratitude" placeholder="A person, a small comfort, something your body let you do…"></textarea></section>
  <section class="card"><h2>Evening reflection</h2><p class="prompt">What made you smile? When were you fully present? What can you let go of?</p><textarea id="reflection" placeholder="A few honest lines are enough…"></textarea><div class="actions"><span id="dayStatus" class="status" role="status">Changes sync automatically.</span></div></section>
- <section class="card"><h2>Your journal</h2><p class="hint">Unlimited space for thoughts, moments and things you want to remember.</p><textarea id="journalText" placeholder="Write freely. There is no format to follow…"></textarea><div class="actions"><button id="addJournal">Save journal entry</button><span id="journalStatus" class="status" role="status"></span></div><div id="journalEntries"><div class="empty">Your entries will appear here.</div></div></section>
- <section class="card"><h2>Your AI companion ✨</h2><p class="prompt">A gentle conversation about the life you're living — not another productivity score.</p><p class="small">Choose what to share. Nothing is sent automatically; review the prompt before copying it.</p><div class="actions"><button id="copyDaily">Copy daily reflection prompt</button><button class="secondary" id="copyWeekly">Copy weekly reflection prompt</button></div><textarea id="promptPreview" class="hidden" readonly aria-label="AI prompt preview"></textarea><div class="actions"><button class="ghost" id="togglePrompt">Preview shared prompt</button></div><p id="aiStatus" class="status" role="status"></p></section>
- <section class="card"><h2>Your personal data</h2><p class="small">Your information is stored in your private Firebase account and synced when online. Export a copy whenever you like.</p><div class="actions"><button class="secondary" id="exportData">Export my data</button></div><p id="backupStatus" class="status" role="status"></p></section>
+ <section class="card" id="journal-section"><h2>Your journal</h2><p class="hint">Unlimited space for thoughts, moments and things you want to remember.</p><textarea id="journalText" placeholder="Write freely. There is no format to follow…"></textarea><div class="actions"><button id="addJournal">Save journal entry</button><span id="journalStatus" class="status" role="status"></span></div><div id="journalEntries"><div class="empty">Your entries will appear here.</div></div></section>
+ <section class="card" id="ai-section"><h2>Your AI companion ✨</h2><p class="prompt">A gentle conversation about the life you're living — not another productivity score.</p><p class="small">Choose what to share. Nothing is sent automatically; review the prompt before copying it.</p><div class="actions"><button id="copyDaily">Copy daily reflection prompt</button><button class="secondary" id="copyWeekly">Copy weekly reflection prompt</button></div><textarea id="promptPreview" class="hidden" readonly aria-label="AI prompt preview"></textarea><div class="actions"><button class="ghost" id="togglePrompt">Preview shared prompt</button></div><p id="aiStatus" class="status" role="status"></p></section>
+ <section class="card" id="data-section"><h2>Your personal data</h2><p class="small">Your information is stored in your private Firebase account and synced when online. Export a copy whenever you like.</p><div class="actions"><button class="secondary" id="exportData">Export my data</button></div><p id="backupStatus" class="status" role="status"></p></section>
+ </div>
 </div>
 <footer>Be where your feet are. Let today be enough. ♡</footer>
 </main>
