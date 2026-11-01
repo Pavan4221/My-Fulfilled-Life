@@ -1,5 +1,6 @@
 import React from 'react';
 import { useApp } from '../context/AppContext';
+import { APP_VERSION } from '../version';
 
 export const Header: React.FC = () => {
   const { todayFormatted } = useApp();
@@ -15,6 +16,9 @@ export const Header: React.FC = () => {
       </h1>
       <div className="text-[#778078] text-sm">
         Live well. Be grateful. Enjoy the little things.
+      </div>
+      <div className="text-[10px] text-[#9a9b91] font-mono mt-2" aria-label={`App version ${APP_VERSION}`}>
+        v{APP_VERSION}
       </div>
     </header>
   );
