@@ -1,0 +1,8 @@
+{
+  "name": "My Fulfilled Life",
+  "description": "A gentle wellbeing companion for daily intentions, gratitude, reflection, and journaling.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,0 +1,30 @@
+name: Dispatch Gentle Reminders
+
+on:
+  schedule:
+    # Runs every 15 minutes to evaluate due reminders across timezones
+    - cron: '*/15 * * * *'
+  workflow_dispatch: # Allows manual trigger from GitHub Actions tab
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install push dependencies
+        run: npm install web-push firebase-admin --no-save
+
+      - name: Run reminders dispatcher
+        env:
+          FIREBASE_SERVICE_ACCOUNT_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
+          VAPID_PUBLIC_KEY: ${{ secrets.VAPID_PUBLIC_KEY }}
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          VAPID_SUBJECT: ${{ secrets.VAPID_SUBJECT || 'mailto:support@myfulfilledlife.app' }}
+        run: node scripts/dispatch-reminders.mjs

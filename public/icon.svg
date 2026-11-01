@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#087a70"/><stop offset=".55" stop-color="#064f4b"/><stop offset="1" stop-color="#003b3a"/></linearGradient>
+ <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffe18b"/><stop offset="1" stop-color="#f5b83e"/></linearGradient>
+ <linearGradient id="hill" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#4b9b68"/><stop offset="1" stop-color="#075b50"/></linearGradient>
+ <linearGradient id="road" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff2bf"/><stop offset="1" stop-color="#e8c46c"/></linearGradient>
+ </defs>
+ <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+ <circle cx="256" cy="245" r="172" fill="none" stroke="#f7df91" stroke-width="5" stroke-dasharray="900 180" transform="rotate(-48 256 245)"/>
+ <path d="M87 287 Q166 232 250 282 Q338 228 425 285 L425 350 L87 350Z" fill="url(#hill)"/>
+ <path d="M88 310 Q166 271 252 309 Q337 268 424 310 L424 372 L88 372Z" fill="#075448"/>
+ <circle cx="257" cy="285" r="54" fill="url(#sun)"/>
+ <path d="M80 370 C142 334 205 343 257 318 C292 301 329 313 362 329 C320 350 298 367 294 389 C288 418 332 438 389 466 L123 466 C141 424 158 403 190 387 C221 371 254 365 282 353 C233 350 168 356 80 390Z" fill="url(#road)"/>
+ <g fill="#a9d94d" stroke="#d4eb75" stroke-width="2"><path d="M360 174 C335 132 350 102 383 92 C394 129 383 157 360 174Z"/><path d="M362 179 C383 137 415 135 435 153 C416 181 390 190 362 179Z"/><path d="M355 178 C325 154 298 163 291 188 C318 202 340 198 355 178Z"/></g>
+ <path d="M356 186 Q365 211 359 231" fill="none" stroke="#a9d94d" stroke-width="5" stroke-linecap="round"/>
+ <text x="256" y="258" fill="#fff8df" text-anchor="middle" font-family="Georgia,serif" font-size="112" font-weight="bold" letter-spacing="-8">MFL</text>
+</svg>
